@@ -6,7 +6,7 @@
 /*   By: mfeldman <michael.feldman.ca@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 21:04:42 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/03 18:32:50 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/03 23:37:54 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 #include <fcntl.h>
 
 char *get_next_line(int fd);
-int ft_lignelen(char *ligne);
+int ft_lignelen(char *buf);
 
 #endif 
