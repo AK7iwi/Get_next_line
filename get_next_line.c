@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mfeldman <michael.feldman.ca@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:43:14 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/03 17:22:43 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:32:31 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char *get_next_line(int fd)
         return(NULL);
     ret = read(fd, buf, BUFFER_SIZE);
     buf[ret] = '\0';
+    ft_lignelen(buf);
     return(buf);
 }
+
 
