@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:43:14 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/10/22 14:48:33 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/03 17:22:43 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ char *get_next_line(int fd)
         return(NULL);
     ret = read(fd, buf, BUFFER_SIZE);
     buf[ret] = '\0';
-    free(buf);
     return(buf);
 }
+
