@@ -6,7 +6,7 @@
 /*   By: mfeldman <michael.feldman.ca@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:43:14 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/04 02:23:29 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/04 17:53:57 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,30 @@ char *get_next_line(int fd)
 {
     char    *buf;
     int     ret;
-    
+
     buf = malloc(sizeof(char) * BUFFER_SIZE + 1);
     if(!buf)
         return(NULL);
     if (fd < 0)
         return(NULL);
     ret = read(fd, buf, BUFFER_SIZE);
-    printf("%d", ft_lignelen(buf));
     buf[ret] = '\0';
-    return(buf);
+    return(SizeBuff(buf));   
 }
 
-int bufjoin()
+char *SizeBuff(char *buf)
 {
-    while(BUFFER_SIZE < ft_lignelen(buf))
+    static char *buf2;
+    int i;
+    
+    i = 0;
+    buf2 = malloc(sizeof(char) * BUFFER_SIZE + 1);
+    if(BUFFER_SIZE <= ft_lignelen(buf))
+        buf2[i] = buf[i];
+    if(BUFFER_SIZE > ft_lignelen(buf))
     {
-        
+        while(buf[i] && buf[i] != '\n')
+            buf2[i] = buf[i];
     }
-        
+    return(buf2);
 }
-
-
