@@ -12,12 +12,15 @@
 
 #include "get_next_line.h"
 
+
+/*Longueur de la ligne*/
+
 int ft_lignelen(char *buf)
 {
     int i;
 
     i = 0;
-    while(buf[i] && buf[i] != '\n' )
+    while(buf[i] && buf[i] != '\n')
         i++;
     return(i);
 }
