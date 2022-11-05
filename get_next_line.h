@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfeldman <michael.feldman.ca@gmail.com>    +#+  +:+       +#+        */
+/*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 21:04:42 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/04 17:51:42 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/05 01:11:39 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 #include <fcntl.h>
 
 char *get_next_line(int fd);
-int ft_lignelen(char *buf);
+size_t ft_lignelen(char *buf);
 char *SizeBuff(char *buf);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif 
