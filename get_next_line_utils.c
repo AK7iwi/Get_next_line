@@ -21,8 +21,8 @@ size_t ft_lignelen(char *buf)
 
     i = 0;
     while(buf[i] && buf[i] != '\n')
-        i++;
-    return(i);
+		i++;
+	return(i);
 }
 
 /*Join pour BUffer <*/

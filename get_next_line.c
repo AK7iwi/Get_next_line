@@ -6,7 +6,7 @@
 /*   By: mfeldman <michael.feldman.ca@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:43:14 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/07 02:28:10 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/08 00:25:07 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 char *get_next_line(int fd)
 {
-    static char    *buf;
     int     ret;
-
+    char    *buf;
+    /*char    *ligne;*/
+    /*static char *stock;*/
     buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     ret = read(fd, buf, BUFFER_SIZE);
     if(!buf)
@@ -24,23 +25,31 @@ char *get_next_line(int fd)
     if (fd < 0)
         return(NULL);
     buf[ret] = '\0';
-    return(SizeBuff(buf)); 
+    /* ligne = ft_strjoin(stock, buf);*/
+    return(ft_stock(buf));
     free(buf);  
 }
 
-char *SizeBuff(char *buf)
+/* Fct pour stocker */
+char *ft_stock(char *buf)
 {
-    char *buf2;
+    int i;
     int j;
-
+    char *fin;
+    
+    i = 0;
     j = 0;
-    buf2 = malloc(sizeof(char) * (BUFFER_SIZE  + 1));
-    while(buf[j] && buf[j] != '\n')
-        {
-            buf2[j] = buf[j];
-            j++;
-        }
-    return(buf2);
+    fin = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    while(buf[i] && buf[i] != '\n')
+        i++;  
+    i += 1;
+    while (BUFFER_SIZE - i > 0 && buf[i] && buf[i] != '\n')
+    {     
+        fin[j] = buf[i];
+        i++;
+        j++;
+    }
+    return(fin);
 }
 
 
