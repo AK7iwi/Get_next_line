@@ -1,6 +1,6 @@
 Le texte de remplissage Lorem ipsum est utilisé par les graphistes, 
 les programmeurs et les imprimeurs 
-dans le but d’occuper les éspaces d’un site internet, 
-d’un produit pubblicitaire ou d’une pruduction éditoriale dont le texte final n’est pas encore prêt.
-Cet expédient est utilisé pour avoir une idée du résultat inalqui peu après sera imprimé ou 
+dans le but d’occuper les espaces d’un site internet, 
+d’un produit pubblicitaire ou d’une production éditoriale dont le texte final n’est pas encore prêt.
+Cet expédient est utilisé pour avoir une idée du résultat initial qui peu après sera imprimé ou 
 diffusé avec des instruments  digitaux.
