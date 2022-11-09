@@ -6,7 +6,7 @@
 /*   By: mfeldman <michael.feldman.ca@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 15:43:14 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/08 22:29:02 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/09 20:43:06 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char *get_next_line(int fd)
 {
     int     ret;
     char    *buf;
-    static char    *ligne;
-    /*static char *stock;*/
+    /*char    *ligne;
+    static char *stock;*/
     
     buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     ret = read(fd, buf, BUFFER_SIZE);
@@ -26,11 +26,10 @@ char *get_next_line(int fd)
     if (fd < 0)
         return(NULL);
     buf[ret] = '\0'; 
-    ligne = ft_ligne(buf);
-    return(ligne);  
+    return(buf);  
 }
 
-/* Fct pour stocker */
+/* Fct pour stocker buffer plus grand*/
 
 char *ft_stock(char *buf)
 {
@@ -42,8 +41,9 @@ char *ft_stock(char *buf)
     j = 0;
     stock = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     while(buf[i] && buf[i] != '\n')
-        i++;  
-    while (BUFFER_SIZE - i > 0 && buf[i] && buf[i] != '\n')
+        i++;
+    i++;
+    while (BUFFER_SIZE - i > 0 && buf[i])
     {     
         stock[j] = buf[i];
         i++;
@@ -67,4 +67,16 @@ char *ft_ligne(char *buf)
         i++;
     }
 	return(ligne);
+}
+
+char *ft_GBuffer(char *)
+{
+    char *dest;
+    char *stock;
+    
+    dest = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    stock = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    dest = ft_ligne(buf);
+    if(BUFFER_SIZE > ft_ligne(buf))
+        stock = ft_stock(buf);
 }
