@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:57 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/10 19:47:58 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/11 21:31:10 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ size_t ft_lignelen(char *buf);
 char *ft_stock(char *buf);
 char	*ft_strjoin(char *s1, char *s2);
 char *ft_ligne(char *buf);
+char *ft_add(char *ligneF ,char *buf);
 
 #endif 
