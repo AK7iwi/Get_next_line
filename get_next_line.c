@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:51 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/11 21:41:15 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/12 00:52:23 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char *get_next_line(int fd)
     int     ret;
     char    *buf;
     static char    *ligneF;
-    /*char *stock;*/
+    char *stock;
     
     buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     ret = read(fd, buf, BUFFER_SIZE);
@@ -30,11 +30,11 @@ char *get_next_line(int fd)
     return(ligneF);
 }
 
-/*Fct qui add la variable statique*/
+/*Fct qui add la variable statique + fonction qui dit quand la ligne est fini+ fonction qui dit quand il ya une nouvelle ligne/ quand le fichier est lu 
 char *ft_add(char *ligneF ,char *buf)
 {
     
-}
+}*/
 
 /* Fct pour stocker buffer plus grand*/
 
@@ -69,7 +69,7 @@ char *ft_ligne(char *buf)
     i = 0;
     ligne = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     while(buf[i] && buf[i] != '\n')
-    {    
+    {   
         ligne[i] = buf[i];
         i++;
     }
