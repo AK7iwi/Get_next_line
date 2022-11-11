@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                             :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mfeldman <michael.feldman.ca@gmail.com>    +#+  +:+       +#+        */
+/*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 17:39:23 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/03 18:30:24 by mfeldman         ###   ########.fr       */
+/*   Created: 2022/11/10 19:47:27 by mfeldman          #+#    #+#             */
+/*   Updated: 2022/11/10 19:47:28 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "get_next_line.h"
 
@@ -25,7 +26,7 @@ size_t ft_lignelen(char *buf)
 	return(i);
 }
 
-/*Join pour BUffer <*/
+/*Join pour BUffer */
 
 char	*ft_strjoin(char *s1, char *s2)
 {
