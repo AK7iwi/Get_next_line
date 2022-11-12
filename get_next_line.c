@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:51 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/12 15:44:56 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/12 16:41:51 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ char *get_next_line(int fd)
         return(NULL);
     ret = read(fd, buf, BUFFER_SIZE);
     ligneF = ft_ligne(buf);
-    while(ft_lignefin(buf) != 1)
+    while(ft_lignefin(buf)!= 1)
     {    
-        stock = ft_ligne(buf);
         ret = read(fd, buf, BUFFER_SIZE);
+        stock = ft_ligne(buf);
         ligneF = ft_strjoin(ligneF,stock);
     }
     buf[ret] = '\0';
