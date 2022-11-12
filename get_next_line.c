@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:51 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/12 13:46:07 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/12 15:44:56 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ char *get_next_line(int fd)
 {
     int     ret;
     char    *buf;
-    static char    *ligneF;
-    /*char *stock;*/
+    char    *ligneF;
+    static char *stock;
     
     buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    ligneF = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     if(!buf)
         return(NULL);
-    ret = read(fd, buf, BUFFER_SIZE);
     if (fd < 0)
         return(NULL);
+    ret = read(fd, buf, BUFFER_SIZE);
     ligneF = ft_ligne(buf);
-    /*stock = ft_stock(buf);*/
+    while(ft_lignefin(buf) != 1)
+    {    
+        stock = ft_ligne(buf);
+        ret = read(fd, buf, BUFFER_SIZE);
+        ligneF = ft_strjoin(ligneF,stock);
+    }
     buf[ret] = '\0';
-    return(ligneF);
+    return(free(buf),ligneF);
 }
-
-/*Fct qui add la variable statique + fonction qui dit quand la ligne est fini+ fonction qui dit quand il ya une nouvelle ligne/ quand le fichier est lu 
-char *ft_add(char *ligneF ,char *buf)
-{
-    
-}*/
 
 /* Fct pour stocker buffer plus grand*/
 
@@ -76,6 +76,8 @@ char *ft_ligne(char *buf)
     }
 	return(ligne);
 }
+
+/* Fonction pour trouver la fin de la ligne*/
 
 int ft_lignefin(char *buf)
 {
