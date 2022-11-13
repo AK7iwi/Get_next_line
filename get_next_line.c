@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:51 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/12 22:30:42 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/13 21:05:30 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,18 @@ char *get_next_line(int fd)
 {
     int     ret;
     char    *buf;
-    char    *ligneF;
-    char *stock;
+    static char    *ligneF;
+    /*char *stock;*/
     
     buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     if(!buf)
         return(NULL);
     if (fd < 0)
         return(NULL);
-    ret = read(fd, buf, BUFFER_SIZE);
-    ligneF = ft_ligne(buf);
-    while(ft_lignefin(buf)!= 1)
-    {    
+    while(ft_lignefin(buf) !=1)
+    {   
         ret = read(fd, buf, BUFFER_SIZE);
-        stock = ft_ligne(buf);
-        ligneF = ft_strjoin(ligneF,stock);
+        ligneF = ft_ligne(buf);
     }
     buf[ret] = '\0';
     return(free(buf),ligneF);
@@ -50,7 +47,7 @@ char *ft_stock(char *buf)
     while(buf[i] && buf[i] != '\n')
         i++;
     i++;
-    while (BUFFER_SIZE - i > 0 && buf[i])
+    while (BUFFER_SIZE - i > 0 && buf[i] && buf[i] != '\n') 
     {     
         stock[j] = buf[i];
         i++;
@@ -73,7 +70,10 @@ char *ft_ligne(char *buf)
         ligne[i] = buf[i];
         i++;
     }
-	return(ligne);
+    if(buf[i] == '\n')
+        ligne[i] = '\n'; 
+	
+    return(ligne);
 }
 
 /* Fonction pour trouver la fin de la ligne*/
