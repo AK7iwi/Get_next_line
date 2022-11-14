@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:51 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/13 21:05:30 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/14 23:57:01 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,20 @@ char *get_next_line(int fd)
 {
     int     ret;
     char    *buf;
-    static char    *ligneF;
-    /*char *stock;*/
-    
+    char    *ligneF;
+    static char *stock;
+
     buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    ret = 1;
     if(!buf)
         return(NULL);
-    if (fd < 0)
+    if (fd < 0 || BUFFER_SIZE <= 0)
         return(NULL);
-    while(ft_lignefin(buf) !=1)
+    while(ft_lignefin(buf) !=1 && ret)
     {   
         ret = read(fd, buf, BUFFER_SIZE);
-        ligneF = ft_ligne(buf);
+        stock = ft_stock(buf);
+        ligneF = ft_strjoin(buf, stock);
     }
     buf[ret] = '\0';
     return(free(buf),ligneF);
@@ -44,6 +46,8 @@ char *ft_stock(char *buf)
     i = 0;
     j = 0;
     stock = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    if(!stock)
+        return(NULL);
     while(buf[i] && buf[i] != '\n')
         i++;
     i++;
@@ -53,6 +57,8 @@ char *ft_stock(char *buf)
         i++;
         j++;
     }
+     if(buf[i] == '\n')
+        stock[j] = '\n';
     return(stock);
 }
 
@@ -65,6 +71,8 @@ char *ft_ligne(char *buf)
     
     i = 0;
     ligne = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    if(!ligne)
+        return(NULL);
     while(buf[i] && buf[i] != '\n')
     {   
         ligne[i] = buf[i];
@@ -72,7 +80,6 @@ char *ft_ligne(char *buf)
     }
     if(buf[i] == '\n')
         ligne[i] = '\n'; 
-	
     return(ligne);
 }
 
