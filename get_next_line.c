@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:51 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/14 23:57:01 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/15 02:26:15 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char *get_next_line(int fd)
     int     ret;
     char    *buf;
     char    *ligneF;
-    static char *stock;
+    /*static char *stock;*/
 
     buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     ret = 1;
@@ -25,11 +25,10 @@ char *get_next_line(int fd)
         return(NULL);
     if (fd < 0 || BUFFER_SIZE <= 0)
         return(NULL);
-    while(ft_lignefin(buf) !=1 && ret)
+    while(ft_lignefin(buf) !=1)
     {   
         ret = read(fd, buf, BUFFER_SIZE);
-        stock = ft_stock(buf);
-        ligneF = ft_strjoin(buf, stock);
+        ligneF = ft_ligne(buf);
     }
     buf[ret] = '\0';
     return(free(buf),ligneF);
