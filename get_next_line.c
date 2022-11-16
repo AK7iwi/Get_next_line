@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:51 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/15 22:27:28 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/16 02:47:26 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,30 @@ char *get_next_line(int fd)
     int     ret;
     char    *buf;
     char    *ligneF;
-    /*static char *stock;*/
+    static char *stock;
 
-    buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     ret = 1;
+    buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
     if(!buf)
         return(NULL);
     if (fd < 0 || BUFFER_SIZE <= 0)
         return(NULL);
-    while(ft_lignefin(buf) !=1)
+    while(ft_lignefin(buf) !=1 && ret)
     {   
         ret = read(fd, buf, BUFFER_SIZE);
-        stock = ft_strjoin(stock,buf);
-        buf[ret] = '\0';
+        if(ret == -1)
+            return(NULL);
+        printf("%s%d%s","Ligne fin : ", ft_lignefin(buf), "  ");
+        ligneF = ft_ligne(buf);
+        printf("%s%s%s","ligneF :  ", ligneF, "  ");
+        stock = ft_stock(buf);
+        printf("%s%s%s","stock1 :  ", stock,"\n");
+        ligneF = ft_strjoin(stock, buf);
+        printf("%s%s%s","LIGNEF :  ", ligneF,"\n");
     }
-    ligneF = ft_ligne(stock);
-    stock = ft_stock(stock);
-    buf[ret] = '\0';
-    return(free(buf),ligneF);
+    ligneF = ft_ligne(ligneF);
+    buf[ret] = 0;
+    return(free(buf),"oui");
 }
 
 /* Fct pour stocker buffer plus grand*/
@@ -59,7 +65,7 @@ char *ft_stock(char *buf)
         i++;
         j++;
     }
-     if(buf[i] == '\n')
+    if(buf[i] == '\n')
         stock[j] = '\n';
     return(stock);
 }
@@ -72,7 +78,7 @@ char *ft_ligne(char *buf)
     char *ligne;
     
     i = 0;
-    ligne = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    ligne = malloc(sizeof(char) * (ft_strlen(buf) + 1));
     if(!ligne)
         return(NULL);
     while(buf[i] && buf[i] != '\n')
