@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:51 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/16 02:47:26 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/16 02:54:37 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ char *get_next_line(int fd)
 
 /* Fct pour stocker buffer plus grand*/
 
-char *ft_stock(char *buf)
+char *ft_stock(char *buf) /*char stock*/
 {
     int i;
     int j;
-    char *stock;
+    char *stock; /*stock2*/
     
     i = 0;
     j = 0;
@@ -67,6 +67,8 @@ char *ft_stock(char *buf)
     }
     if(buf[i] == '\n')
         stock[j] = '\n';
+        /*j++*/
+    /*buf[j] = 0*/
     return(stock);
 }
 
