@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-/*int main()
+int main()
 {
     int fd;
     char *str;
@@ -15,9 +15,9 @@
     }
     free(str);
     return(0);
-}*/
+}
 
-int main()
+/*int main()
 {
     int fd;
     char *str;
@@ -30,4 +30,4 @@ int main()
     str2 = get_next_line(fd);
     
     printf("%s%s%s", str,str1,str2);
-}
+}*/
