@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:51 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/16 02:54:37 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:42:51 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,37 +19,31 @@ char *get_next_line(int fd)
     char    *ligneF;
     static char *stock;
 
-    ret = 1;
-    buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    buf = malloc(sizeof(char) * (BUFFER_SIZE + 1)); 
     if(!buf)
         return(NULL);
     if (fd < 0 || BUFFER_SIZE <= 0)
         return(NULL);
-    while(ft_lignefin(buf) !=1 && ret)
+    stock = ft_stock(buf);
+    while(ft_lignefin(buf) != 1)
     {   
         ret = read(fd, buf, BUFFER_SIZE);
         if(ret == -1)
             return(NULL);
-        printf("%s%d%s","Ligne fin : ", ft_lignefin(buf), "  ");
         ligneF = ft_ligne(buf);
-        printf("%s%s%s","ligneF :  ", ligneF, "  ");
-        stock = ft_stock(buf);
-        printf("%s%s%s","stock1 :  ", stock,"\n");
-        ligneF = ft_strjoin(stock, buf);
-        printf("%s%s%s","LIGNEF :  ", ligneF,"\n");
+        stock = ft_strjoin(stock, ligneF);
+        buf[ret] = '\0';
     }
-    ligneF = ft_ligne(ligneF);
-    buf[ret] = 0;
-    return(free(buf),"oui");
+    return(free(buf),stock);
 }
 
 /* Fct pour stocker buffer plus grand*/
 
-char *ft_stock(char *buf) /*char stock*/
+char *ft_stock(char *buf) 
 {
     int i;
     int j;
-    char *stock; /*stock2*/
+    char *stock; 
     
     i = 0;
     j = 0;
@@ -59,16 +53,11 @@ char *ft_stock(char *buf) /*char stock*/
     while(buf[i] && buf[i] != '\n')
         i++;
     i++;
-    while (BUFFER_SIZE - i > 0 && buf[i] && buf[i] != '\n') 
-    {     
-        stock[j] = buf[i];
-        i++;
-        j++;
-    }
-    if(buf[i] == '\n')
-        stock[j] = '\n';
-        /*j++*/
-    /*buf[j] = 0*/
+    while (buf[i] && buf[i] != '\n')    
+        stock[j++] = buf[i++];
+    if(buf[i] == '\n') 
+        stock[j++] = '\n';
+    stock[j] = 0;
     return(stock);
 }
 
@@ -89,7 +78,8 @@ char *ft_ligne(char *buf)
         i++;
     }
     if(buf[i] == '\n')
-        ligne[i] = '\n'; 
+        ligne[i++] = '\n'; 
+    ligne[i] = 0;
     return(ligne);
 }
 
