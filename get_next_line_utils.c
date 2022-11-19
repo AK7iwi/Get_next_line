@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:27 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/18 18:57:31 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/19 20:50:53 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ size_t ft_strlen(char *buf)
     int i;
 
     i = 0;
+	if(!buf)
+		return(0);
     while(buf[i])
 		i++;
+	
 	return(i);
 }
 
