@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:35:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/18 19:08:57 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/19 12:12:00 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ char *ft_ligne(char *buf)
         ligne[i++] = '\n';
     return(ligne);
 }
+
 
 /* Fonction pour trouver la fin de la ligne*/
 
