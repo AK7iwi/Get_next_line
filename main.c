@@ -1,5 +1,6 @@
 #include "get_next_line.h"
 
+/*
 int main()
 {
     int fd;
@@ -15,9 +16,9 @@ int main()
     }
     free(str);
     return(0);
-}
+}*/
 
-/*
+
 int main()
 {
     int fd;
@@ -31,20 +32,18 @@ int main()
     str2 = get_next_line(fd);
     
     printf("%s%s%s",str,str1,str2);
-}*/
+}
 
-/*int main()
+/*
+int main()
 {
     char *str1;
     char *str2;
-    char *str3;
-    char *str4;
 
-    str1 = "ofeojrhhhhhhhhhhhh\nojrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhg\norgg";
+    str1 = "ofeoj\nojrhhhhhhhhhhh\norgg";
     str2 = ft_stock(str1);
-    str3 = ft_ligne(str1);
-    str4 = ft_strjoin(str3,str2);
-    printf("%s", str4);
+    printf("%s", str2);
+    free(str2);
 }
 
 char *ft_stock(char *str) 
@@ -55,7 +54,7 @@ char *ft_stock(char *str)
     
     i = 0;
     j = 0;
-    stock = malloc(sizeof(char) * (ft_strlen(str) + 2));
+    stock = malloc(sizeof(char) * (ft_strlen(str)) + 1 );
     if(!stock)
         return(NULL);
     while(str[i] && str[i] != '\n')
@@ -73,7 +72,7 @@ size_t ft_strlen(char *buf)
     int i;
 
     i = 0;
-    while(buf[i])
+    while(buf[i] && buf[i] != '\n')
 		i++;
 	return(i);
 }
@@ -84,7 +83,7 @@ char *ft_ligne(char *buf)
     char *ligne;
     
     i = 0;
-    ligne = malloc(sizeof(char) * (ft_strlen(buf) + 1));
+    ligne = malloc(sizeof(char) * (ft_strlen(buf)));
     if(!ligne)
         return(NULL);
     while(buf[i] && buf[i] != '\n')
@@ -103,7 +102,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	i;
 	size_t	j;
 
-	s3 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	s3 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)));
 	i = -1;
 	j = 0;
 	if (!s3)
