@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:57 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/18 18:57:54 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/20 22:42:42 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@
 #include <fcntl.h>
 
 char *get_next_line(int fd);
-char *ft_stock(char *buf);
+
 char	*ft_strjoin(char *s1, char *s2);
-char *ft_ligne(char *buf);
-int ft_lignefin(char *buf);
+
 size_t	ft_strlen(char *s);
 
 #endif 
