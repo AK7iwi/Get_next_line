@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:35:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/21 05:21:28 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/21 07:27:18 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,62 +15,66 @@
 char *get_next_line(int fd)
 {
     int     ret;
-    char    *buf;
+    char    *stock;
     char    *ligneF;
-    static char *stock;
+    static char buf[BUFFER_SIZE + 1];
 
-    buf = malloc(sizeof(char) * (BUFFER_SIZE + 1)); 
-    if(!buf)
-        return(NULL);
     if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
         return(NULL);
-    while(ft_lignefin(buf) != 1)
+    stock = NULL;
+    stock = ft_strjoin(stock, buf);
+    ret = 1;
+    while(!ft_lignefin(buf) && ret)
     {   
         ret = read(fd, buf, BUFFER_SIZE);
         if(ret == -1 )
-            return(NULL);
-        ligneF = ft_ligne(buf)
-        stock = ft_strjoin(stock, ligneF);
+            return(free(stock),NULL);
+        buf[ret] = '\0';
+        if (!ret && !stock[0])
+            return(free(stock),NULL);
+        stock = ft_strjoin(stock, buf);
     }
-    ligneF = ft_ligne(stock);
-    buf[ret] = '\0';
+    ligneF = ft_stock(stock,buf);
     return(free(stock),ligneF);
 }
 
-
-char *ft_stock(char *str) 
+char *ft_stock(char *stock, char *buf) 
 {
     int i;
     int j;
-    char *stock; 
+    char *rest; 
     
     i = 0;
     j = 0;
-    stock = malloc(sizeof(char) * (ft_strlen(str) + 1));
-    if(!stock)
+    rest = malloc(sizeof(char) * (ft_strlen(stock) + 1));
+    if(!rest)
         return(NULL);
-    while(str[i] && str[i] != '\n')
+    while(stock[i] && stock[i] != '\n')
         i++;
-    i++;
-    while(str[i])    
-        stock[j++] = str[i++];
-    if(str[i] == '\n') 
-        stock[j] = '\n';
-    return(stock);
+    if(stock[i] == '\n')
+        i++;
+    while(stock[i])    
+        rest[j++] = stock[i++];
+    rest[j] = '\0';
+    j = 0;
+    while(buf[j] && stock[i])
+        buf[j++] = stock[i++];
+    buf[j] = '\0';
+    return(rest);
 }
 
-char *ft_ligne(char *str)
+char *ft_ligne(char *buf)
 {
     int i;
     char *ligne;
     
     i = 0;
-    ligne = malloc(sizeof(char) * (ft_strlen(str) + 1));
+    ligne = malloc(sizeof(char) * (ft_strlen(buf) + 1));
     if(!ligne)
         return(NULL);
-    while(str[i])
+    while(buf[i])
     {   
-        ligne[i] = str[i];
+        ligne[i] = buf[i];
         i++;
     }
     ligne[i] = '\0';
@@ -86,7 +90,7 @@ int ft_lignefin(char *buf)
     j = 0;
     while(buf[i])
     {   
-        if(buf[i] == '\n' || buf[i] == '\0')
+        if(buf[i] == '\n')
             j = 1;
         i++;
     }

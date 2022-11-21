@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:27 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/21 05:06:20 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/21 07:26:06 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,18 @@ size_t ft_strlen(char *buf)
 	return(i);
 }
 
-
-
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*s3;
+	char *s4;
 	size_t	i;
 	size_t	j;
 
+	if(!s1)
+	{
+		s4 = ft_ligne(s2);
+		return(s4);
+	}
 	s3 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	i = -1;
 	j = 0;
@@ -43,6 +47,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (i < ft_strlen(s1) + ft_strlen(s2))
 		s3[i++] = s2[j++];
 	s3[i] = '\0';
+	free(s1);
 	return (s3);
 }
 
