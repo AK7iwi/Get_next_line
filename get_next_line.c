@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:35:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/21 07:27:18 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/21 08:08:31 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,11 @@ char *ft_stock(char *stock, char *buf)
         i++;
     if(stock[i] == '\n')
         i++;
-    while(stock[i])    
-        rest[j++] = stock[i++];
+    while(stock[j] && j < i)   
+    {  
+        rest[j] = stock[j];
+        j++;
+    }
     rest[j] = '\0';
     j = 0;
     while(buf[j] && stock[i])
