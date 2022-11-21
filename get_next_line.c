@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:35:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/21 05:08:45 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/21 05:21:28 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ char *get_next_line(int fd)
         ret = read(fd, buf, BUFFER_SIZE);
         if(ret == -1 )
             return(NULL);
-        ligneF = ft_ligne(buf);
-        // printf("%s%s%s", "ligne :", ligneF, "\n");
+        ligneF = ft_ligne(buf)
         stock = ft_strjoin(stock, ligneF);
-        // printf("%s%s%s", "stock :", stock, "\n");
     }
     ligneF = ft_ligne(stock);
     buf[ret] = '\0';
@@ -70,13 +68,12 @@ char *ft_ligne(char *str)
     ligne = malloc(sizeof(char) * (ft_strlen(str) + 1));
     if(!ligne)
         return(NULL);
-    while(str[i] && str[i] != '\n')
+    while(str[i])
     {   
         ligne[i] = str[i];
         i++;
     }
-    if(str[i] == '\n')
-        ligne[i] = '\n';
+    ligne[i] = '\0';
     return(ligne);
 }
 
