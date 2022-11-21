@@ -6,21 +6,20 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:27 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/21 07:26:06 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/21 15:24:04 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "get_next_line.h"
 
-size_t ft_strlen(char *buf)
+size_t	ft_strlen(char *buf)
 {
-    int i;
-
-    i = 0;
+	int		i;
+	
+	i = 0;
 	if(!buf)
 		return(0);
-    while(buf[i])
+	while(buf[i])
 		i++;
 	return(i);
 }

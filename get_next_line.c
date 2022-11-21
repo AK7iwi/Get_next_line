@@ -6,18 +6,18 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:35:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/21 08:08:31 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/21 15:25:34 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+char    *get_next_line(int fd)
 {
     int     ret;
     char    *stock;
     char    *ligneF;
-    static char buf[BUFFER_SIZE + 1];
+    static char     buf[BUFFER_SIZE + 1];
 
     if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
         return(NULL);
