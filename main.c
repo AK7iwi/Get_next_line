@@ -6,9 +6,11 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:25:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/21 16:26:50 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/24 22:59:29 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
 
 int	main(void)
 {
