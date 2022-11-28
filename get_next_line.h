@@ -6,12 +6,15 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:47:57 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/21 15:26:57 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/28 22:19:01 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include <unistd.h>
 # include <stdio.h>
