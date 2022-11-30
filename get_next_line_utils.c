@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:19:30 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/30 04:17:07 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/30 04:49:10 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,29 @@ size_t	ft_strlen(char *buf)
 	return (i);
 }
 
+
 char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*s3;
-	char	*s4;
-	size_t	i;
-	size_t	j;
+	char	*dest;
+	int		i;
+	int		j;
 
-	if (!s1)
-	{
-		s4 = ft_ligne(s2);
-		return (s4);
-	}
-	s3 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	i = -1;
 	j = 0;
-	if (!s3)
+	if (!s1)
+	{
+		s1 = (char *)(malloc(sizeof(char) * 1));
+		if (!s1)
+			return (NULL);
+		s1[0] = 0;
+	}
+	dest = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!dest)
 		return (NULL);
 	while (s1[++i])
-		s3[i] = s1[i];
+		dest[i] = s1[i];
 	while (s2[j])
-		s3[i++] = s2[j++];
-	s3[i] = '\0';
-	free (s1);
-	return (s3);
+		dest[i++] = s2[j++];
+	dest[i] = 0;
+	return (free(s1), dest);
 }
