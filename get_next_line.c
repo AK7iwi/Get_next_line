@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:35:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/30 01:35:41 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/30 03:49:59 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*get_next_line(int fd)
 		return (NULL);
 	stock = NULL;
 	stock = ft_strjoin(stock, buf);
+	if (!stock)
+		return (free(stock), NULL);
 	ret = 1;
 	while (!ft_lignefin(buf) && ret)
 	{
@@ -34,16 +36,14 @@ char	*get_next_line(int fd)
 			return (free(stock), NULL);
 		stock = ft_strjoin(stock, buf);
 	}
-	if (!stock)
-		return (free(stock), NULL);
 	lignef = ft_stock(stock, buf);
 	return (free(stock), lignef);
 }
 
 char	*ft_stock(char *stock, char *buf)
 {
-	int			i;
-	int			j;
+	size_t			i;
+	size_t			j;
 	char		*rest;
 
 	i = 0;
@@ -70,7 +70,7 @@ char	*ft_stock(char *stock, char *buf)
 
 char	*ft_ligne(char *buf)
 {
-	int		i;
+	size_t		i;
 	char	*ligne;
 
 	i = 0;
@@ -88,8 +88,8 @@ char	*ft_ligne(char *buf)
 
 int	ft_lignefin(char *buf)
 {
-	int		i;
-	int		j;
+	size_t		i;
+	size_t		j;
 
 	i = 0;
 	j = 0;

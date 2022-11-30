@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:19:30 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/30 01:22:03 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/30 03:58:27 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(char *buf)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
 	if (!buf)
