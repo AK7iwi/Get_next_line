@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:19:30 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/30 03:58:27 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/30 04:17:07 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	j = 0;
 	if (!s3)
 		return (NULL);
-	while (++i < ft_strlen(s1))
+	while (s1[++i])
 		s3[i] = s1[i];
-	while (i < ft_strlen(s1) + ft_strlen(s2))
+	while (s2[j])
 		s3[i++] = s2[j++];
 	s3[i] = '\0';
 	free (s1);
