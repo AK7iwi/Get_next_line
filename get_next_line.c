@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:35:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/30 04:43:40 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/30 05:55:56 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,6 @@ char	*ft_stock(char *stock, char *buf)
 		buf[j++] = stock[i++];
 	buf[j] = '\0';
 	return (rest);
-}
-
-char	*ft_ligne(char *buf)
-{
-	size_t		i;
-	char	*ligne;
-
-	i = 0;
-	ligne = malloc(sizeof(char) * (ft_strlen(buf) + 1));
-	if (!ligne)
-		return (NULL);
-	while (buf[i])
-	{
-		ligne[i] = buf[i];
-		i++;
-	}
-	ligne[i] = '\0';
-	return (ligne);
 }
 
 int	ft_lignefin(char *buf)
