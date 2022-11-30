@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:35:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/21 16:23:31 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/11/30 01:35:41 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	*get_next_line(int fd)
 			return (free(stock), NULL);
 		stock = ft_strjoin(stock, buf);
 	}
+	if (!stock)
+		return (free(stock), NULL);
 	lignef = ft_stock(stock, buf);
 	return (free(stock), lignef);
 }
