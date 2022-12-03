@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:41:10 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/30 18:56:26 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/12/03 20:15:26 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ size_t	ft_strlen(char *buf)
 		i++;
 	return (i);
 }
-
 
 char	*ft_strjoin(char *s1, char *s2)
 {

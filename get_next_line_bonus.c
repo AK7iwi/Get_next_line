@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 18:39:14 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/30 18:56:47 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/12/03 20:16:14 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_stock(char *stock, char *buf)
 {
 	size_t			i;
 	size_t			j;
-	char		*rest;
+	char			*rest;
 
 	i = 0;
 	j = 0;
