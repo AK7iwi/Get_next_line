@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:25:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/11/30 19:12:14 by mfeldman         ###   ########.fr       */
+/*   Updated: 2022/12/03 20:17:50 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,3 @@ int	main(void)
 	free (str);
 	return (0);
 }
-
-/*int main()
-{
-    int fd;
-    char *str;
-    char *str1;
-    char *str2;
-
-    fd = open("Test.txt",O_RDONLY);
-    str = get_next_line(fd);
-    str1 = get_next_line(fd);
-    str2 = get_next_line(fd);
-    
-    printf("%s%s%s",str,str1,str2);
- }*/
