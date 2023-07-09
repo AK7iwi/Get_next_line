@@ -6,38 +6,26 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 18:35:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2022/12/03 20:16:03 by mfeldman         ###   ########.fr       */
+/*   Updated: 2023/07/09 19:15:37 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_next_line(int fd)
+int	ft_lignefin(char *buf)
 {
-	int				ret;
-	char			*stock;
-	char			*lignef;
-	static char		buf[BUFFER_SIZE + 1];
+	size_t		i;
+	size_t		j;
 
-	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
-		return (NULL);
-	stock = NULL;
-	stock = ft_strjoin(stock, buf);
-	if (!stock)
-		return (free(stock), NULL);
-	ret = 1;
-	while (!ft_lignefin(buf) && ret)
+	i = 0;
+	j = 0;
+	while (buf[i])
 	{
-		ret = read(fd, buf, BUFFER_SIZE);
-		if (ret == -1)
-			return (free(stock), NULL);
-		buf[ret] = '\0';
-		if (!ret && !stock[0])
-			return (free(stock), NULL);
-		stock = ft_strjoin(stock, buf);
+		if (buf[i] == '\n')
+			j = 1;
+		i++;
 	}
-	lignef = ft_stock(stock, buf);
-	return (free(stock), lignef);
+	return (j);
 }
 
 char	*ft_stock(char *stock, char *buf)
@@ -68,18 +56,30 @@ char	*ft_stock(char *stock, char *buf)
 	return (rest);
 }
 
-int	ft_lignefin(char *buf)
+char	*get_next_line(int fd)
 {
-	size_t		i;
-	size_t		j;
+	int				ret;
+	char			*stock;
+	char			*lignef;
+	static char		buf[BUFFER_SIZE + 1];
 
-	i = 0;
-	j = 0;
-	while (buf[i])
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
+		return (NULL);
+	stock = NULL;
+	stock = ft_strjoin(stock, buf);
+	if (!stock)
+		return (free(stock), NULL);
+	ret = 1;
+	while (!ft_lignefin(buf) && ret)
 	{
-		if (buf[i] == '\n')
-			j = 1;
-		i++;
+		ret = read(fd, buf, BUFFER_SIZE);
+		if (ret == -1)
+			return (free(stock), NULL);
+		buf[ret] = '\0';
+		if (!ret && !stock[0])
+			return (free(stock), NULL);
+		stock = ft_strjoin(stock, buf);
 	}
-	return (j);
+	lignef = ft_stock(stock, buf);
+	return (free(stock), lignef);
 }
