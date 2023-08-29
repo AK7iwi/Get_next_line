@@ -6,7 +6,7 @@
 /*   By: mfeldman <mfeldman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 16:25:12 by mfeldman          #+#    #+#             */
-/*   Updated: 2023/08/29 18:36:07 by mfeldman         ###   ########.fr       */
+/*   Updated: 2023/08/29 20:24:43 by mfeldman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int	main(void)
 		str = get_next_line(fd);
 	}
 	free (str);
+	close(fd);
 	return (0);
 }
